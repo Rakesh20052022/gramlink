@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Natural Pest Control",
+    "description":
+      "Using neem leaves and garlic spray reduced pest damage without chemicals.",
+    "author": "Ramesh (Farmer)",
+    "likes": 12
+  },
+  {
+    "id": 2,
+    "title": "Water Saving Technique",
+    "description":
+      "Drip irrigation helped reduce water usage by 40% in summer crops.",
+    "author": "Sita (Village Entrepreneur)",
+    "likes": 8
+  }
+]

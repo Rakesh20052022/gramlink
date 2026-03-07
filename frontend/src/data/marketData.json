@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Organic Fertilizer",
+    "price": 450,
+    "category": "Farming",
+    "image": "https://placehold.co/150x150?text=Fertilizer"
+  },
+  {
+    "id": 2,
+    "name": "High-Yield Seeds",
+    "price": 120,
+    "category": "Seeds",
+    "image": "https://placehold.co/150x150?text=Seeds"
+  },
+  {
+    "id": 3,
+    "name": "Tractor Rental (1 Hr)",
+    "price": 800,
+    "category": "Machinery",
+    "image": "https://placehold.co/150x150?text=Tractor"
+  }
+]

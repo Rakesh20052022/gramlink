@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Modern Farming Tips",
+    "description": "Learn better farming methods to increase crop yield using simple techniques.",
+    "iconName": "Leaf",
+    "path": "/learn/farming"
+  },
+  {
+    "title": "Government Schemes",
+    "description": "Understand PM-Kisan, crop insurance, subsidies and how to apply easily.",
+    "iconName": "IndianRupee",
+    "path": "/learn/schemes"
+  },
+  {
+    "title": "Market Awareness",
+    "description": "Know current market trends, fair prices, and how to avoid middlemen.",
+    "iconName": "BookOpen",
+    "path": "/learn/market"
+  },
+  {
+    "title": "Digital Literacy",
+    "description": "Learn how to use smartphones, UPI payments, and online services safely.",
+    "iconName": "Smartphone",
+    "path": "/learn/digital"
+  }
+]
