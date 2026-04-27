@@ -1,1 +1,1 @@
-# gramlink
+GramLink is an website where farmers can buy crops, fertilyzer etc. and also sell farming related products. 

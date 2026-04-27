@@ -7,12 +7,13 @@ import Ideas from "./pages/Ideas/Ideas.jsx";
 import Help from "./pages/Help/Help.jsx";
 import News from "./pages/News/News.jsx";
 import Directory from "./pages/Directory/Directory.jsx";
-import NotFound from "./components/NotFound.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import Digital from "./pages/Learn/Digital.jsx";
 import Farming from "./pages/Learn/Farming.jsx"
 import Schemes from "./pages/Learn/Schemes.jsx";
 import Market from "./pages/Learn/Market.jsx";
 import ChatSupport from "./pages/Help/ChatSupport.jsx";
+import Chat from "./pages/Learn/Chat.jsx";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path="/ideas" element={<Ideas />} />
 
         <Route path="/help/chat" element={<ChatSupport />} />
+        <Route path="/Chat" element={<Chat />} />
 
 
       </Routes>

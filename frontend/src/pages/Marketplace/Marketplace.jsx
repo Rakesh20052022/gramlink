@@ -58,9 +58,9 @@ function Marketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f4ee] p-6 font-sans">
+    <div className="min-h-screen bg-amber-50 p-6 font-sans">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-green-700 mb-8 text-center">
+        <h1 className="text-4xl font-bold text-[#1f4d3a] mb-8 text-center">
           🛒 Marketplace Dashboard
         </h1>
 
@@ -114,7 +114,7 @@ function Marketplace() {
                   <button
                     type="submit"
                     className={`flex-1 py-3 px-4 rounded-lg text-white font-bold shadow-md transition transform active:scale-95 ${
-                      isEditing ? "bg-yellow-500 hover:bg-yellow-600" : "bg-green-600 hover:bg-green-700"
+                      isEditing ? "bg-yellow-500 hover:bg-yellow-600" : "bg-green-900 hover:bg-green-700"
                     }`}
                   >
                     {isEditing ? "Update Item" : "Sell Item"}

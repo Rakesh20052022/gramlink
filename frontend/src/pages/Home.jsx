@@ -4,6 +4,7 @@ import Footer from '../components/Footer.jsx';
 import { Wheat } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { useNavigate } from 'react-router-dom';
+import FloatingButton from '../components/FloatingButton.jsx';
 
 
 const Home = () => {
@@ -77,15 +78,7 @@ const Home = () => {
             />
           </div>
 
-<a href="#"
-     class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-800 text-white rounded-full p-4 shadow-lg transition duration-300 ease-in-out"
-     aria-label="Floating Action Button">
-    <svg
-         stroke-width="2" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-    </svg>
-  </a>
-
+<FloatingButton />
 
           <div
             className="absolute left-0 right-0 bottom-0 pointer-events-none"

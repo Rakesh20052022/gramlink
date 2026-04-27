@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Chat = ({ onClose }) => {
   const [messages, setMessages] = useState([
-    { role: "ai", text: "Hello 🌾 I am GramLink AI. How can I help you today?" },
+    {
+      role: "ai",
+      text: "Hello 🌾 I am GramLink AI. How can I help you today?",
+    },
   ]);
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    } else {
+      navigate(-1); // Go back to previous page
+    }
+  };
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -28,10 +41,7 @@ const Chat = ({ onClose }) => {
 
       const data = await res.json();
 
-      setMessages((prev) => [
-        ...prev,
-        { role: "ai", text: data.reply },
-      ]);
+      setMessages((prev) => [...prev, { role: "ai", text: data.reply }]);
     } catch (error) {
       setMessages((prev) => [
         ...prev,
@@ -52,7 +62,7 @@ const Chat = ({ onClose }) => {
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="bg-white w-full sm:w-[420px] h-[75vh] rounded-t-2xl sm:rounded-2xl shadow-xl flex flex-col"
+          className="bg-white w-full sm:w-[500px] h-[90vh] rounded-t-2xl sm:rounded-2xl shadow-xl flex flex-col"
           initial={{ y: 120 }}
           animate={{ y: 0 }}
           exit={{ y: 120 }}
@@ -60,7 +70,7 @@ const Chat = ({ onClose }) => {
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-[#214e3b] text-white rounded-t-2xl">
             <h3 className="font-semibold">GramLink AI Assistant</h3>
-            <button onClick={onClose}>
+            <button onClick={handleClose}>
               <X className="w-5 h-5" />
             </button>
           </div>

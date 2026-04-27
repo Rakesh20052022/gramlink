@@ -50,59 +50,54 @@ const Navbar = () => {
 
   return (
     <>
-      <AnimatePresence>
-        {showNav && (
-          <motion.header
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="sticky top-0 z-50 bg-[#f7f4ee] shadow-md"
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: showNav ? 0 : -100 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="sticky top-0 z-50 bg-[#f7f4ee] shadow-md"
+      >
+        <div className="flex items-center h-20 px-4 max-w-7xl mx-auto">
+          {/* Logo - Click goes home */}
+          <div
+            className="flex-1 transition hover:scale-105 cursor-pointer"
+            onClick={() => navigate("/")}
           >
-            <div className="flex items-center h-20 px-4 max-w-7xl mx-auto">
-              {/* Logo - Click goes home */}
-              <div
-                className="flex-1 transition hover:scale-105 cursor-pointer"
-                onClick={() => navigate("/")}
-              >
-                <Logo />
-              </div>
+            <Logo />
+          </div>
 
-              {/* DESKTOP MENU */}
-              <nav className="hidden md:flex items-center justify-center">
-                {navItems.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => handleNavClick(item.path)} // Uses the specific path
-                    className="relative text-[#1f4d3a] text-lg font-medium mx-4 group bg-transparent border-none cursor-pointer"
-                  >
-                    {item.name}
-                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#1f4d3a] transition-all duration-300 group-hover:w-full"></span>
-                  </button>
-                ))}
-              </nav>
-
-              {/* Desktop Login */}
-              <div className="hidden md:flex flex-1 justify-end">
-                <button
-                  onClick={() => setShowAuth(true)}
-                  className="bg-[#214e3b] text-white px-4 py-1 rounded font-semibold transition hover:scale-105 shadow-lg shadow-green-700/40"
-                >
-                  Login
-                </button>
-              </div>
-
-              {/* Mobile Hamburger */}
+          {/* DESKTOP MENU */}
+          <nav className="hidden md:flex items-center justify-center">
+            {navItems.map((item) => (
               <button
-                onClick={() => setOpenMenu(true)}
-                className="md:hidden text-[#1f4d3a]"
+                key={item.name}
+                onClick={() => handleNavClick(item.path)} // Uses the specific path
+                className="relative text-[#1f4d3a] text-lg font-medium mx-4 group bg-transparent border-none cursor-pointer"
               >
-                <Menu size={28} />
+                {item.name}
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#1f4d3a] transition-all duration-300 group-hover:w-full"></span>
               </button>
-            </div>
-          </motion.header>
-        )}
-      </AnimatePresence>
+            ))}
+          </nav>
+
+          {/* Desktop Login */}
+          <div className="hidden md:flex flex-1 justify-end">
+            <button
+              onClick={() => setShowAuth(true)}
+              className="bg-[#214e3b] text-white px-4 py-1 rounded font-semibold transition hover:scale-105 shadow-lg shadow-green-700/40"
+            >
+              Login
+            </button>
+          </div>
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setOpenMenu(true)}
+            className="md:hidden text-[#1f4d3a]"
+          >
+            <Menu size={28} />
+          </button>
+        </div>
+      </motion.header>
 
       {/* MOBILE MENU */}
       <AnimatePresence>

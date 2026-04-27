@@ -37,7 +37,7 @@ const Ideas = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[#f7f4ee] px-4 py-10">
+    <section className="min-h-screen bg-amber-50 px-4 py-10">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}

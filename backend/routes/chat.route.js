@@ -1,9 +1,13 @@
 import express from "express";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 import { ENV } from "../config/env.js";
 
 const router = express.Router();
-const genAI = new GoogleGenerativeAI(ENV.GEMINI_API_KEY);
+
+// 🔥 Initialize Groq
+const groq = new Groq({
+  apiKey: ENV.GROQ_API_KEY,
+});
 
 router.post("/", async (req, res) => {
   try {
@@ -12,25 +16,31 @@ router.post("/", async (req, res) => {
     if (typeof message !== "string" || message.trim().length === 0) {
       return res
         .status(400)
-        .json({ error: "`message` must be a non-empty string" });
+        .json({ error: "message must be a non-empty string" });
     }
 
     if (message.length > 5000) {
       return res
         .status(400)
-        .json({ error: "`message` is too long (max 5000 chars)" });
+        .json({ error: "message is too long (max 5000 chars)" });
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    // 🔥 Groq API Call
+    const result = await groq.chat.completions.create({
+      model: "llama-3.1-8b-instant", // 🔥 updated to current model
+      messages: [{ role: "user", content: message }],
+    });
 
-    const result = await model.generateContent(message);
-
-    // SDK result shapes may vary; defensively extract the text
+    // ✅ Extract response (same logic style as your code)
     let reply = null;
     try {
-      if (result?.response?.text) reply = result.response.text();
-      else if (typeof result === "string") reply = result;
-      else reply = JSON.stringify(result);
+      if (result?.choices?.[0]?.message?.content) {
+        reply = result.choices[0].message.content;
+      } else if (typeof result === "string") {
+        reply = result;
+      } else {
+        reply = JSON.stringify(result);
+      }
     } catch (e) {
       reply = String(result);
     }
