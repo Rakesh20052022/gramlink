@@ -117,7 +117,7 @@ const Navbar = () => {
                 <X size={28} />
               </button>
             </div>
-
+            {/* mobile menu items with staggered animation */}
             <motion.nav
               initial="hidden"
               animate="show"
