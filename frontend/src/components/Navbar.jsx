@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import Logo from "./Logo.jsx";
@@ -24,7 +24,6 @@ const Navbar = () => {
   const [showAuth, setShowAuth] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [showNav, setShowNav] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Navigation handler
   const handleNavClick = (path) => {
@@ -32,26 +31,17 @@ const Navbar = () => {
     navigate(path);
   };
 
-  // Scroll Logic
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setShowNav(false);
-      } else {
-        setShowNav(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
+  // Scroll Logic using framer-motion
+  const { scrollY } = useScroll();
+  
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 80) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  });
 
   return (
     <>

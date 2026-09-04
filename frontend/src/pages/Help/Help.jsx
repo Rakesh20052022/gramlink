@@ -11,7 +11,7 @@ const Help = () => {
 
 
       {/* ===== MAIN CONTACT SECTION ===== */}
-      <section className="bg-[#f8f5f2] py-16 px-6 md:px-20">
+      <section className="bg-amber-50 py-16 px-6 md:px-20">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
 
           {/* ===== LEFT SIDE (FORM) ===== */}
