@@ -1,6 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import Logo from "./Logo.jsx";
@@ -17,6 +22,11 @@ const navItems = [
   { name: "Directory", path: "/directory" },
 ];
 
+const MotionDiv = motion.div;
+const MotionHeader = motion.header;
+const MotionNav = motion.nav;
+const MotionButton = motion.button;
+
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation(); // ✅ MUST be inside the component
@@ -31,11 +41,11 @@ const Navbar = () => {
     navigate(path);
   };
 
-  // Scroll Logic using framer-motion
   const { scrollY } = useScroll();
-  
+
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
+    const previous = scrollY.getPrevious() ?? 0;
+
     if (latest > previous && latest > 80) {
       setShowNav(false);
     } else {
@@ -46,14 +56,13 @@ const Navbar = () => {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <motion.header
+      <MotionHeader
         initial={{ y: -100 }}
         animate={{ y: showNav ? 0 : -100 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="sticky top-0 z-50 bg-[#f7f4ee] shadow-md"
       >
         <div className="flex items-center h-20 px-4 max-w-7xl mx-auto">
-
           {/* ================= LOGO ================= */}
           <div
             className="flex-1 transition hover:scale-105 cursor-pointer"
@@ -80,9 +89,7 @@ const Navbar = () => {
                   {/* Underline */}
                   <span
                     className={`absolute left-0 -bottom-1 h-[2px] bg-[#1f4d3a] transition-all duration-300 ${
-                      isActive
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
                 </button>
@@ -103,12 +110,13 @@ const Navbar = () => {
           {/* ================= MOBILE HAMBURGER ================= */}
           <button
             onClick={() => setOpenMenu(true)}
-            className="md:hidden text-[#1f4d3a]"
+            aria-label="Open navigation menu"
+            className="md:hidden shrink-0 text-[#1f4d3a]"
           >
             <Menu size={28} />
           </button>
         </div>
-      </motion.header>
+      </MotionHeader>
 
       {/* ================= MOBILE MENU ================= */}
       <AnimatePresence>
@@ -129,7 +137,11 @@ const Navbar = () => {
                 <Logo />
               </div>
 
-              <button onClick={() => setOpenMenu(false)}>
+              <button
+                type="button"
+                aria-label="Close navigation menu"
+                onClick={() => setOpenMenu(false)}
+              >
                 <X size={28} />
               </button>
             </div>
@@ -165,9 +177,7 @@ const Navbar = () => {
                       },
                     }}
                     className={`text-2xl text-[#1f4d3a] bg-transparent border-none transition-all duration-200 ${
-                      isActive
-                        ? "font-bold"
-                        : "font-semibold"
+                      isActive ? "font-bold" : "font-semibold"
                     }`}
                   >
                     {item.name}
@@ -191,9 +201,7 @@ const Navbar = () => {
       </AnimatePresence>
 
       {/* ================= AUTH ================= */}
-      {showAuth && (
-        <Auth onClose={() => setShowAuth(false)} />
-      )}
+      {showAuth && <Auth onClose={() => setShowAuth(false)} />}
     </>
   );
 };
