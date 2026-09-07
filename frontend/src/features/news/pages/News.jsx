@@ -1,5 +1,5 @@
 import React from "react";
-import NewsCard from "./NewsCard";
+import NewsCard from "../components/NewsCard";
 
 // Your data array. In the future, this will come from a database API!
 const newsArticles = [

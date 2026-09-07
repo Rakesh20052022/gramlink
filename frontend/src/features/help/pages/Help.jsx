@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../../components/Navbar.jsx";
-import Footer from "../../components/Footer.jsx";
+import Navbar from "../../../components/Layout/Navbar.jsx";
+import Footer from "../../../components/Layout/Footer.jsx";
 import { MdPhone,MdEmail,MdLocationPin, MdOutlineSupportAgent } from "react-icons/md";
 
 const Help = () => {

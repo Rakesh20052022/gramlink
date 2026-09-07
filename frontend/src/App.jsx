@@ -1,19 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import Home from "./pages/Home.jsx";
-import Marketplace from "./pages/Marketplace/Marketplace.jsx";
-import Learn from "./pages/Learn/Learn.jsx";
-import Ideas from "./pages/Ideas/Ideas.jsx";
-import Help from "./pages/Help/Help.jsx";
-import News from "./pages/News/News.jsx";
-import Directory from "./pages/Directory/Directory.jsx";
+import Navbar from "./components/Layout/Navbar.jsx";
+import Home from "./features/home/pages/Home.jsx";
+import Marketplace from "./features/marketplace/pages/Marketplace.jsx";
+import Learn from "./features/learn/pages/Learn.jsx";
+import Ideas from "./features/ideas/pages/Ideas.jsx";
+import Help from "./features/help/pages/Help.jsx";
+import News from "./features/news/pages/News.jsx";
+import Directory from "./features/directory/pages/Directory.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import Digital from "./pages/Learn/Digital.jsx";
-import Farming from "./pages/Learn/Farming.jsx";
-import Schemes from "./pages/Learn/Schemes.jsx";
-import Market from "./pages/Learn/Market.jsx";
-import ChatSupport from "./pages/Help/ChatSupport.jsx";
-import Chat from "./pages/Learn/Chat.jsx";
+import Digital from "./features/learn/pages/Digital.jsx";
+import Farming from "./features/learn/pages/Farming.jsx";
+import Schemes from "./features/learn/pages/Schemes.jsx";
+import Market from "./features/learn/pages/Market.jsx";
+import ChatSupport from "./features/help/components/ChatSupport.jsx";
+import Chat from "./features/learn/pages/Chat.jsx";
 
 function App() {
   return (

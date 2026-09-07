@@ -1,11 +1,11 @@
 import About from "../components/About.jsx";
 import Features from "../components/Features.jsx";
-import Footer from "../components/Footer.jsx";
+import Footer from "../../../components/Layout/Footer.jsx";
 import { Wheat } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { useNavigate } from "react-router-dom";
-import FloatingButton from "../components/FloatingButton.jsx";
-import homePageImage from "../assets/homePage.png";
+import FloatingButton from "../../../components/UI/FloatingButton.jsx";
+import homePageImage from "../../../assets/homePage.png";
 
 const Home = () => {
   const navigate = useNavigate();

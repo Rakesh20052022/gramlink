@@ -8,8 +8,8 @@ import {
 } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import Logo from "./Logo.jsx";
-import Auth from "../context/Auth.jsx";
+import Logo from "../UI/Logo.jsx";
+import Auth from "../../features/auth/context/Auth.jsx";
 
 // Navigation items
 const navItems = [
