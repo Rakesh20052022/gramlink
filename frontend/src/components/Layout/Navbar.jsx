@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   motion,
@@ -40,6 +40,12 @@ const Navbar = () => {
     setOpenMenu(false);
     navigate(path);
   };
+
+  // Reset navbar and scroll position when route changes
+  useEffect(() => {
+    setShowNav(true);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const { scrollY } = useScroll();
 
